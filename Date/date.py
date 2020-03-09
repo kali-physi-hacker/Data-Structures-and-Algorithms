@@ -85,7 +85,7 @@ class Date:
         dayNum = (self.day()) % 7
         day = daysList[self.dayOfWeek() - (dayNum-1)]
 
-        return day  # self._days_in_words[day]
+        return day
 
     def firstDayOfMonthInWords(self):
         day = self.firstDayOfMonth()
@@ -115,8 +115,6 @@ class Date:
             }
         month_number = self.getNumberOfDaysInMonth()
         firstDay = self.firstDayOfMonth()
-        # print(firstDay)
-        # import pdb; pdb.set_trace()
 
         day = 0
         while day < month_number:
@@ -127,7 +125,6 @@ class Date:
             if (firstDay+1) > 0:
                 print("   ", end=end)
                 firstDay -= 1
-            # currentDay = firstDay+day
             else:
                 mDay = day-self.firstDayOfMonth()
                 # if mDay == 0:
