@@ -107,46 +107,34 @@ class Date:
         return month_number
 
     def printCalendar(self):
-        print("\t{month} {year}".format(month=self.monthInWords(), year=self.year()))
-        print("Su Mo Tu We Th Fr Sa")
+        
+        # Print Days Abbreviations 
+        daysAbbrev = "Su Mo Tu We Th Fr Sa"
+        month_year = self.monthInWords() + " " + str(self.year())
+        spaces = int((len(daysAbbrev) - len(month_year))/2)
+        print(" "*spaces+"{month_year}".format(month_year=month_year))
+        print(daysAbbrev)
         calendar_days = {
             0: "Su", 1: "Mo", 2: "Tu", 3: "We",
             4: "Th", 5: "Fr", 6: "Sa"
-            }
+        }
         month_number = self.getNumberOfDaysInMonth()
-        firstDay = self.firstDayOfMonth()
-
-        day = 0
-        while day < month_number:
-            mDay = day
+        firstDay = self.firstDayOfMonth() + 1
+       
+        # Print The Date (Days) In Order
+        for day in range(month_number+firstDay):
             end = ''
             if (day+1) % 7 == 0:
                 end = '\n'
-            if (firstDay+1) > 0:
+            if (firstDay) > 0:
                 print("   ", end=end)
                 firstDay -= 1
+                day -= 1
             else:
                 mDay = day-self.firstDayOfMonth()
-                # if mDay == 0:
-                    # continue
                 print("%02d " % (day-self.firstDayOfMonth()), end=end)
-            day += 1
-        # for day in range(month_number):
-        #     end = ''
-        #     if (day+1) % 7 == 0:
-        #         end = '\n'
-        #     if (firstDay+1) > 0:
-        #         print("   ", end=end)
-        #         firstDay -= 1
-        #         day -= 1
-        #     # currentDay = firstDay+day
-        #     else:
-        #         mDay = day-self.firstDayOfMonth()
-        #         # if mDay == 0:
-        #             # continue
-        #         print("%02d " % (day-self.firstDayOfMonth()), end=end)
+
         print()
-        print(month_number)
 
 
     def __str__(self):
@@ -221,5 +209,3 @@ class Date:
 
 if __name__ == "__main__":
     import pdb; pdb.set_trace()
-    # _date = Date(2, 27, 2020)
-    # _date.printCalendar()

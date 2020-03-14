@@ -17,6 +17,7 @@ class _ArrayIterator:
         else:
             raise StopIteration
 
+
 class Array:
     def __init__(self, size):
         assert size > 0, "Array size must be > 0"
