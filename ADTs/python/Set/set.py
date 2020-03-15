@@ -13,6 +13,8 @@ class _SetIterator:
             item = self._theSet[self._curNdx]
             self._curNdx += 1
             return item
+        else:
+            raise StopIteration
 
 # Implementation of the Set ADT container using a Python list
 class Set:
